@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Livros</title>
+</head>
+<body>
+<h1>Livros registrados</h1>
+<a th:href="@{/livros/novo}">Adicionar livro</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>ISBN</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="livro, contador : ${livros}">
+        <td th:text="${livro.titulo}"></td>
+        <td th:text="${livro.autor}"></td>
+        <td th:text="${livro.isbn}"></td>
+        <td>
+            <a th:href="@{/livros/excluir/{posicao}(posicao=${contador.index})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
